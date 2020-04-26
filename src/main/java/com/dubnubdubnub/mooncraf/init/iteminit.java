@@ -125,7 +125,7 @@ public class iteminit
 public enum Mod1ItemTier implements IItemTier{
 		
 		// harvestLevel,  maxUses,  efficiency,  attackDamage,  enchantability, Supplier<Ingredient> repairMaterial
-		BONE_DIAMOND_TIER(3, 1500, 5, 4, 20, () -> {
+		BONE_DIAMOND_TIER(5, 1500, 5, 4, 20, () -> {
 			return Ingredient.fromItems(Items.BONE);
 		});
 		
