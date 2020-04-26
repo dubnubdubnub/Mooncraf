@@ -41,7 +41,7 @@ public class iteminit
 	public static final Item bone_shovel = null; 
 	public static final Item bone_hoe = null; 
 	
-	public static final Item bone_diamond_sword = null; 
+	public static final Item infused_bone_diamond_sword = null; 
 	public static final Item bone_diamond_pickaxe = null; 
 	public static final Item bone_diamond_axe = null; 
 	public static final Item bone_diamond_shovel = null; 
@@ -52,6 +52,8 @@ public class iteminit
 	{
 		//Items
 		event.getRegistry().register(new Item(new Item.Properties().group(MooncrafItemGroup.instance).food(new Food.Builder().hunger(10).saturation(1.2f).setAlwaysEdible().effect(new EffectInstance(Effects.ABSORPTION, 2400, 1), 0.5f).effect(new EffectInstance(Effects.SPEED, 2400, 1), 1).build())).setRegistryName("cheese"));
+		event.getRegistry().register(new Item(new Item.Properties().group(MooncrafItemGroup.instance).food(new Food.Builder().hunger(20).saturation(4f).setAlwaysEdible().effect(new EffectInstance(Effects.ABSORPTION, 2400, 4), 1).effect(new EffectInstance(Effects.RESISTANCE, 6000, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 600, 5), 1).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 6000, 1), 1).build())).setRegistryName("blu_cheese"));
+		event.getRegistry().register(new Item(new Item.Properties().group(MooncrafItemGroup.instance).food(new Food.Builder().hunger(10).saturation(1.2f).setAlwaysEdible().effect(new EffectInstance(Effects.ABSORPTION, 2400, 1), 0.5f).effect(new EffectInstance(Effects.BAD_OMEN, 2400, 1), 1).effect(new EffectInstance(Effects.BLINDNESS, 2400, 1), 1).effect(new EffectInstance(Effects.CONDUIT_POWER, 2400, 1), 1).effect(new EffectInstance(Effects.DOLPHINS_GRACE, 2400, 1), 1).effect(new EffectInstance(Effects.FIRE_RESISTANCE, 2400, 1), 1).effect(new EffectInstance(Effects.GLOWING, 2400, 1), 1).effect(new EffectInstance(Effects.HASTE, 2400, 1), 1).effect(new EffectInstance(Effects.HEALTH_BOOST, 2400, 1), 1).effect(new EffectInstance(Effects.HERO_OF_THE_VILLAGE, 2400, 1), 1).effect(new EffectInstance(Effects.HUNGER, 2400, 1), 1).effect(new EffectInstance(Effects.INSTANT_DAMAGE, 2400, 1), 1).effect(new EffectInstance(Effects.INSTANT_HEALTH, 2400, 1), 1).effect(new EffectInstance(Effects.INVISIBILITY, 2400, 1), 1).effect(new EffectInstance(Effects.JUMP_BOOST, 2400, 1), 1).effect(new EffectInstance(Effects.LEVITATION, 2400, 1), 1).effect(new EffectInstance(Effects.LUCK, 2400, 1), 1).effect(new EffectInstance(Effects.MINING_FATIGUE, 2400, 1), 1).effect(new EffectInstance(Effects.NAUSEA, 2400, 1), 1).effect(new EffectInstance(Effects.NIGHT_VISION, 2400, 1), 1).effect(new EffectInstance(Effects.POISON, 2400, 1), 1).effect(new EffectInstance(Effects.REGENERATION, 2400, 1), 1).effect(new EffectInstance(Effects.RESISTANCE, 2400, 1), 1).effect(new EffectInstance(Effects.SATURATION, 2400, 1), 1).effect(new EffectInstance(Effects.SLOW_FALLING, 2400, 1), 1).effect(new EffectInstance(Effects.SLOWNESS, 2400, 1), 1).effect(new EffectInstance(Effects.STRENGTH, 2400, 1), 1).effect(new EffectInstance(Effects.UNLUCK, 2400, 1), 1).effect(new EffectInstance(Effects.WATER_BREATHING, 2400, 1), 1).effect(new EffectInstance(Effects.WEAKNESS, 2400, 1), 1).effect(new EffectInstance(Effects.WITHER, 2400, 1), 1).build())).setRegistryName("moldy_cheese"));
 		
 		//Tools
 		event.getRegistry().register(new SwordItem(ModItemTier.BONE_TIER, 6, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_sword"));
@@ -60,7 +62,7 @@ public class iteminit
 		event.getRegistry().register(new ShovelItem(ModItemTier.BONE_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_shovel"));
 		event.getRegistry().register(new HoeItem(ModItemTier.BONE_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_hoe"));
 		
-		event.getRegistry().register(new SwordItem(Mod1ItemTier.BONE_DIAMOND_TIER, 6, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_sword"));
+		event.getRegistry().register(new SwordItem(Mod1ItemTier.BONE_DIAMOND_TIER, 6, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("infused_bone_diamond_sword"));
 		event.getRegistry().register(new PickaxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_pickaxe"));
 		event.getRegistry().register(new AxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_axe"));
 		event.getRegistry().register(new ShovelItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_shovel"));
