@@ -5,6 +5,11 @@
 	"item.mooncraf.bone_axe": "Bone Axe",
 	"item.mooncraf.bone_pickaxe": "Bone Pickaxe",
 	"item.mooncraf.bone_shovel": "Bone Shovel",
-	"item.mooncraf.bone_hoe": "Bone Hoe"
+	"item.mooncraf.bone_hoe": "Bone Hoe",
+	"item.mooncraf.infused_bone_diamond_sword": "Infused Bone Diamond Sword",
+	"item.mooncraf.bone_diamond_axe": "Bone Diamond Axe",
+	"item.mooncraf.bone_diamond_pickaxe": "Bone Diamond Pickaxe",
+	"item.mooncraf.bone_diamond_shovel": "Bone Diamond Shovel",
+	"item.mooncraf.bone_diamond_hoe": "Bone Diamond Hoe"
 	
 }

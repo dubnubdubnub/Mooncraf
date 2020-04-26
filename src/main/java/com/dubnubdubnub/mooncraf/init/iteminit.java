@@ -31,6 +31,8 @@ public class iteminit
 
 	//Items
 	public static final Item cheese = null;
+	public static final Item blu_cheese = null;
+	public static final Item moldy_cheese = null;
 	
 	//Tools
 	public static final Item bone_sword = null; 
@@ -39,7 +41,7 @@ public class iteminit
 	public static final Item bone_shovel = null; 
 	public static final Item bone_hoe = null; 
 	
-	public static final Item bone_sword = null; 
+	public static final Item bone_diamond_sword = null; 
 	public static final Item bone_diamond_pickaxe = null; 
 	public static final Item bone_diamond_axe = null; 
 	public static final Item bone_diamond_shovel = null; 
@@ -111,7 +113,7 @@ public class iteminit
 		}
 
 		@Override
-		public int getEnchantability() {
+		public int getEnchantability() { 
 			return this.enchantability;
 		}
 
@@ -125,8 +127,8 @@ public class iteminit
 public enum Mod1ItemTier implements IItemTier{
 		
 		// harvestLevel,  maxUses,  efficiency,  attackDamage,  enchantability, Supplier<Ingredient> repairMaterial
-		BONE_DIAMOND_TIER(5, 1500, 5, 4, 20, () -> {
-			return Ingredient.fromItems(Items.BONE);
+		BONE_DIAMOND_TIER(5, 1500, 5, 9, 20, () -> {
+			return Ingredient.fromItems(Items.DIAMOND);
 		});
 		
 		private final int harvestLevel; 
