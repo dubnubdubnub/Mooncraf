@@ -39,6 +39,11 @@ public class iteminit
 	public static final Item bone_shovel = null; 
 	public static final Item bone_hoe = null; 
 	
+	public static final Item bone_sword = null; 
+	public static final Item bone_diamond_pickaxe = null; 
+	public static final Item bone_diamond_axe = null; 
+	public static final Item bone_diamond_shovel = null; 
+	public static final Item bone_diamond_hoe = null; 
 	
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event)
@@ -52,6 +57,12 @@ public class iteminit
 		event.getRegistry().register(new AxeItem(ModItemTier.BONE_TIER, 5, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_axe"));
 		event.getRegistry().register(new ShovelItem(ModItemTier.BONE_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_shovel"));
 		event.getRegistry().register(new HoeItem(ModItemTier.BONE_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_hoe"));
+		
+		event.getRegistry().register(new SwordItem(Mod1ItemTier.BONE_DIAMOND_TIER, 6, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_sword"));
+		event.getRegistry().register(new PickaxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_pickaxe"));
+		event.getRegistry().register(new AxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_axe"));
+		event.getRegistry().register(new ShovelItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_shovel"));
+		event.getRegistry().register(new HoeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_hoe"));
 		
 	}
 	
@@ -111,6 +122,61 @@ public class iteminit
 		
 	}
 
+public enum Mod1ItemTier implements IItemTier{
+		
+		// harvestLevel,  maxUses,  efficiency,  attackDamage,  enchantability, Supplier<Ingredient> repairMaterial
+		BONE_DIAMOND_TIER(3, 1500, 5, 4, 20, () -> {
+			return Ingredient.fromItems(Items.BONE);
+		});
+		
+		private final int harvestLevel; 
+		private final int maxUses; 
+		private final float efficiency;
+		private final float attackDamage;
+		private final int enchantability;
+		private final LazyValue<Ingredient> repairMaterial;
+		
+		private Mod1ItemTier(int harvestLevel, int maxUses, float efficiency, float attackDamage, int enchantability, Supplier<Ingredient> repairMaterial) 
+		{
+			this.harvestLevel = harvestLevel;
+			this.maxUses = maxUses;
+			this.efficiency = efficiency;
+			this.attackDamage = attackDamage;
+			this.enchantability = enchantability;
+			this.repairMaterial = new LazyValue<>(repairMaterial);
+		}
+
+		@Override
+		public int getMaxUses() {
+			return this.maxUses;
+		}
+
+		@Override
+		public float getEfficiency() {
+			return this.efficiency;
+		}
+
+		@Override
+		public float getAttackDamage() {
+			return this.attackDamage;
+		}
+
+		@Override
+		public int getHarvestLevel() {
+			return this.harvestLevel;
+		}
+
+		@Override
+		public int getEnchantability() {
+			return this.enchantability;
+		}
+
+		@Override
+		public Ingredient getRepairMaterial() {
+			return this.repairMaterial.getValue();
+		}
+		
+	}
 		
 	 
 }
