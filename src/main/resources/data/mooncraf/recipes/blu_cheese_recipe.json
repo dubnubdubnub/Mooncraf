@@ -5,14 +5,16 @@
       "item": "mooncraf:cheese"
     },
     {
-      "item": "minecraft:lapis_lazuli"
+      "item": "minecraft:lapis_lazuli",
+      "count": 2
     },
     {
-      "item": "minecraft:emerald"
+      "item": "minecraft:emerald",
+      "count": 2
     }
   ],
   "result": {
     "item": "mooncraf:blu_cheese",
-    "count": 2
+    "count": 1
   }
 }

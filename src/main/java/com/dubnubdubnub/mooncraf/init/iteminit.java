@@ -5,9 +5,12 @@ import java.util.function.Supplier;
 import com.dubnubdubnub.mooncraf.Mooncraf;
 import com.dubnubdubnub.mooncraf.Mooncraf.MooncrafItemGroup;
 
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.HoeItem;
+import net.minecraft.item.IArmorMaterial;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -18,6 +21,7 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.util.LazyValue;
+import net.minecraft.util.SoundEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,6 +37,7 @@ public class iteminit
 	public static final Item cheese = null;
 	public static final Item blu_cheese = null;
 	public static final Item moldy_cheese = null;
+	public static final Item armour_plates = null;
 	
 	//Tools
 	public static final Item bone_sword = null; 
@@ -46,6 +51,17 @@ public class iteminit
 	public static final Item bone_diamond_axe = null; 
 	public static final Item bone_diamond_shovel = null; 
 	public static final Item bone_diamond_hoe = null; 
+	
+	//Armour
+	public static final Item plated_iron_helmet = null;
+	public static final Item plated_iron_chestplate = null;
+	public static final Item plated_iron_leggings = null;
+	public static final Item plated_iron_boots = null;
+	
+	public static final Item plated_diamond_helmet = null;
+	public static final Item plated_diamond_chestplate = null;
+	public static final Item plated_diamond_leggings = null;
+	public static final Item plated_diamond_boots = null;
 	
 	@SubscribeEvent
 	public static void registerItems(final RegistryEvent.Register<Item> event)
@@ -61,12 +77,18 @@ public class iteminit
 		event.getRegistry().register(new AxeItem(ModItemTier.BONE_TIER, 5, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_axe"));
 		event.getRegistry().register(new ShovelItem(ModItemTier.BONE_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_shovel"));
 		event.getRegistry().register(new HoeItem(ModItemTier.BONE_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_hoe"));
-		
+			
 		event.getRegistry().register(new SwordItem(Mod1ItemTier.BONE_DIAMOND_TIER, 6, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("infused_bone_diamond_sword"));
 		event.getRegistry().register(new PickaxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_pickaxe"));
 		event.getRegistry().register(new AxeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_axe"));
 		event.getRegistry().register(new ShovelItem(Mod1ItemTier.BONE_DIAMOND_TIER, 3, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_shovel"));
 		event.getRegistry().register(new HoeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_hoe"));
+		
+		//Armour 
+		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.HEAD, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_helmet"));
+		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.CHEST, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_chestplate"));
+		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.LEGS, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_leggings"));
+		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.FEET, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_boots"));
 		
 	}
 	
@@ -181,6 +203,79 @@ public enum Mod1ItemTier implements IItemTier{
 		}
 		
 	}
+
+public enum IPlateArmorMaterial implements IArmorMaterial
+{
+	TEST(Mooncraf.MOD_ID + ":test", 5, new int[] {7, 9 11, 7}, 20, SoundEvents.field_226124_Y_, 7f, () -> {
+		return Ingredient.fromItems(Items.IRON_INGOT);
+	});
+
+	private static final int[] MAX_DAMAGE_ARRAY = new int[] { 16, 16, 16, 16 };	
+	private final String name;
+	private final int maxDamageFactor;
+	private final int[] damageReductionAmountArray;
+	private final int enchantablility;
+	private final SoundEvent soundEvent;
+	private final float toughness;
+	private final LazyValue<Ingredient> repairMaterial;
+	
+	private IPlateArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountArrayIn, int enchantabilityIn, SoundEvent soundEventIn, float toughnessIn, Supplier<Ingredient> repairMaterialIn) {
+		
+		this.name = nameIn;
+		this.maxDamageFactor = maxDamageFactorIn;
+		this.damageReductionAmountArray = damageReductionAmountArrayIn;
+		this.enchantablility = enchantabilityIn;
+		this.soundEvent = soundEventIn;
+		this.toughness = toughnessIn;
+		this.repairMaterial = new LazyValue<>(repairMaterialIn);
+		
+		
+	}
+
+	@Override
+	public int getDurability(EquipmentSlotType slotIn) {
+		// TODO Auto-generated method stub	
+		return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
+	}
+
+	@Override
+	public int getDamageReductionAmount(EquipmentSlotType slotIn) {
+		// TODO Auto-generated method stub
+		return this.damageReductionAmountArray[slotIn.getIndex()];
+	}
+
+	@Override
+	public int getEnchantability() {
+		// TODO Auto-generated method stub
+		return this.enchantablility;
+	}
+
+	@Override
+	public SoundEvent getSoundEvent() {
+		// TODO Auto-generated method stub
+		return this.soundEvent;
+	}
+
+	@Override
+	public Ingredient getRepairMaterial() {
+		// TODO Auto-generated method stub
+		return this.repairMaterial.getValue();
+	}
+
+	@OnlyIn(Dist.CLIENT)
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return this.name;
+	}
+
+	@Override
+	public float getToughness() {
+		// TODO Auto-generated method stub
+		return this.toughness; 
+	}
+	
+}
 		
 	 
 }
