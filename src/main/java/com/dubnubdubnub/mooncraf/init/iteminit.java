@@ -38,6 +38,7 @@ public class iteminit
 	public static final Item blu_cheese = null;
 	public static final Item moldy_cheese = null;
 	public static final Item armour_plates = null;
+	//public static final Item quarry = null;
 	
 	//Tools
 	public static final Item bone_sword = null; 
@@ -85,10 +86,10 @@ public class iteminit
 		event.getRegistry().register(new HoeItem(Mod1ItemTier.BONE_DIAMOND_TIER, 5.0f, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("bone_diamond_hoe"));
 		
 		//Armour 
-		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.HEAD, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_helmet"));
-		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.CHEST, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_chestplate"));
-		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.LEGS, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_leggings"));
-		event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.FEET, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_boots"));
+		//event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.HEAD, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_helmet"));
+		//event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.CHEST, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_chestplate"));
+		//event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.LEGS, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_leggings"));
+		//event.getRegistry().register(new ArmorItem(IPlateArmorMaterial.TEST, EquipmentSlotType.FEET, new Item.Properties().group(MooncrafItemGroup.instance)).setRegistryName("plated_iron_boots"));
 		
 	}
 	
@@ -204,9 +205,9 @@ public enum Mod1ItemTier implements IItemTier{
 		
 	}
 
-public enum IPlateArmorMaterial implements IArmorMaterial
+/*public enum IPlateArmorMaterial implements IArmorMaterial
 {
-	TEST(Mooncraf.MOD_ID + ":test", 5, new int[] {7, 9 11, 7}, 20, SoundEvents.field_226124_Y_, 7f, () -> {
+	TEST(Mooncraf.MOD_ID + ":test", 5, new int[] {7, 9, 11, 7}, 20, SoundEvents.field_226124_Y_, 7F, () -> {
 		return Ingredient.fromItems(Items.IRON_INGOT);
 	});
 
@@ -275,7 +276,7 @@ public enum IPlateArmorMaterial implements IArmorMaterial
 		return this.toughness; 
 	}
 	
-}
+} */
 		
 	 
 }
