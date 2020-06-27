@@ -19,6 +19,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.dubnubdubnub.mooncraf.init.ModEntityTypes;
 import com.dubnubdubnub.mooncraf.init.iteminit;
 
 import java.util.stream.Collectors;
@@ -35,6 +36,9 @@ public class Mooncraf
     	final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
     	modEventBus.addListener(this::setup);
     	modEventBus.addListener(this::doClientStuff);
+    	
+    	ModEntityTypes.ENTITY_TYPES.register(modEventBus);
+    	
         
         instance = this;
         MinecraftForge.EVENT_BUS.register(this);
