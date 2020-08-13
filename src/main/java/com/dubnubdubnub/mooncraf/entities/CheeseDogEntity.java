@@ -14,9 +14,7 @@ import net.minecraft.entity.ai.goal.LookRandomlyGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.goal.WaterAvoidingRandomWalkingGoal;
 import net.minecraft.entity.effect.LightningBoltEntity;
-import net.minecraft.entity.passive.CowEntity;
-import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.horse.LlamaEntity;
+import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,9 +27,9 @@ import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class CheeseDogEntity extends TameableEntity{
+public class CheeseDogEntity extends AnimalEntity{
 
-	public CheeseDogEntity(EntityType<? extends TameableEntity> type, World worldIn) {
+	public CheeseDogEntity(EntityType<? extends AnimalEntity> type, World worldIn) {
 		super(type, worldIn);
 		// TODO Auto-generated constructor stub
 	}
@@ -51,11 +49,10 @@ public class CheeseDogEntity extends TameableEntity{
 	protected void registerGoals() {
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new SwimGoal(this));
-	    this.goalSelector.addGoal(2, this.sitGoal);
-	    this.goalSelector.addGoal(7, new BreedGoal(this, 1.0D));
-	    this.goalSelector.addGoal(8, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
-	    this.goalSelector.addGoal(10, new LookAtGoal(this, PlayerEntity.class, 8.0F));
-	    this.goalSelector.addGoal(10, new LookRandomlyGoal(this));
+	    this.goalSelector.addGoal(3, new BreedGoal(this, 1.0D));
+	    this.goalSelector.addGoal(4, new WaterAvoidingRandomWalkingGoal(this, 1.0D));
+	    this.goalSelector.addGoal(5, new LookAtGoal(this, PlayerEntity.class, 8.0F));
+	    this.goalSelector.addGoal(6, new LookRandomlyGoal(this));
 		
 	}
 	 
@@ -65,13 +62,6 @@ public class CheeseDogEntity extends TameableEntity{
 	      this.getAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(20.0D);
 	      this.getAttributes().registerAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(7.0D);
 	   }
-	
-	public void livingTick() {
-		if(this.world.isRemote) {
-			
-		}
-		super.livingTick();
-	}
 	
 	public void isAttacked() {
 		this.addPotionEffect(new EffectInstance(Effects.LEVITATION, 120, 1));
