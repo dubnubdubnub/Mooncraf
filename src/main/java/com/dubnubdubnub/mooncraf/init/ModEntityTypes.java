@@ -1,6 +1,7 @@
 package com.dubnubdubnub.mooncraf.init;
 
 import com.dubnubdubnub.mooncraf.Mooncraf;
+import com.dubnubdubnub.mooncraf.entities.BasicTurretEntity;
 import com.dubnubdubnub.mooncraf.entities.CheeseDogEntity;
 
 import net.minecraft.entity.EntityClassification;
@@ -20,4 +21,12 @@ public class ModEntityTypes<Entity>{
 					.size(0.12f, 1.3f)
 					.build(new ResourceLocation(Mooncraf.MOD_ID, "cheese_dog_entity")
 							.toString()));
+	
+	public static final RegistryObject<EntityType<BasicTurretEntity>> BASIC_TURRET_ENTITY = ENTITY_TYPES
+			.register("basic_turret_entity", 
+					() -> EntityType.Builder.<BasicTurretEntity>create(BasicTurretEntity::new, EntityClassification.CREATURE)
+					.size(0.12f, 1.3f)
+					.build(new ResourceLocation(Mooncraf.MOD_ID, "basic_turret_entity")
+							.toString()));
+	
 }

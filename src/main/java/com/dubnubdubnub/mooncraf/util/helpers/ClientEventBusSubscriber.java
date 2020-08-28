@@ -1,6 +1,7 @@
 package com.dubnubdubnub.mooncraf.util.helpers;
 
 import com.dubnubdubnub.mooncraf.Mooncraf;
+import com.dubnubdubnub.mooncraf.client.entity.render.BasicTurretEntityRender;
 import com.dubnubdubnub.mooncraf.client.entity.render.CheeseDogEntityRender;
 import com.dubnubdubnub.mooncraf.init.ModEntityTypes;
 
@@ -17,6 +18,10 @@ public class ClientEventBusSubscriber {
 	@SubscribeEvent
 	public static void clientSetup(FMLClientSetupEvent event) {
 		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.CHEESE_DOG_ENTITY.get(), CheeseDogEntityRender::new);
+	}
+	@SubscribeEvent
+	public static void clientSetup1(FMLClientSetupEvent event) {
+		RenderingRegistry.registerEntityRenderingHandler(ModEntityTypes.BASIC_TURRET_ENTITY.get(), BasicTurretEntityRender::new);
 	}
 }
 
