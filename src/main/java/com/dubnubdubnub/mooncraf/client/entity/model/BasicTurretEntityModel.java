@@ -1,13 +1,11 @@
 package com.dubnubdubnub.mooncraf.client.entity.model;
 
 import com.dubnubdubnub.mooncraf.entities.BasicTurretEntity;
-import com.dubnubdubnub.mooncraf.entities.CheeseDogEntity;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
 
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 // Made with Blockbench 3.5.4
 // Exported for Minecraft version 1.15

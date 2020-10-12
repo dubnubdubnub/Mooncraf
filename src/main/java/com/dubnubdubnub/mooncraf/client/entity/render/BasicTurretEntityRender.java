@@ -13,7 +13,7 @@ public class BasicTurretEntityRender extends MobRenderer<BasicTurretEntity, Basi
 	protected static final ResourceLocation TEXTURE = new ResourceLocation(Mooncraf.MOD_ID, "textures/entity/basicturrettexture.png");
 	
 	public BasicTurretEntityRender(EntityRendererManager renderManagerIn) {
-		super (renderManagerIn, new BasicTurretEntityModel<BasicTurretEntity>(), 0.5f);
+		super (renderManagerIn, new BasicTurretEntityModel<BasicTurretEntity>(), 1f);
 	}
 	
 	@Override
